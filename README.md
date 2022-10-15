@@ -10,7 +10,7 @@ Contact Trush081@gmail.com for any questions, issues, or explanations of the des
 5. Upload all code to a public GitHub repo with a readme that explains how to build and run the project
 
 ### Solution ###
-##### My solution involves using Spring Boot to help create a REST service and clean and readable code. Not to mention how powerful using Spring technologies and dependencies are. Some tools I've used here: #####
+#### My solution involves using Spring Boot to help create a REST service and clean and readable code. Not to mention how powerful using Spring technologies and dependencies are. Some tools I've used here: ####
 * In memory Database using H2 and JPARepository (make sure to check out my other branch)
 * Swagger docs for a useful ui component http://localhost:8080/swagger-ui/index.html#/
 * Gradle has a superior build speed that I love taking advantage of
