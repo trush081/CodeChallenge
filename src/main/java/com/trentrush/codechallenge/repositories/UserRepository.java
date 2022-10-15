@@ -1,14 +1,12 @@
 package com.trentrush.codechallenge.repositories;
 
+import com.google.cloud.firestore.Firestore;
 import com.trentrush.codechallenge.entities.User;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-/**
- * Repository class to interact with users
- * <p>
- * Author: Trenton Rush (trush081@gmail.com)
- * Circa: 10/14/2022
- */
-public interface UserRepository extends JpaRepository<User, Integer> {
-
+@Repository
+public class UserRepository extends AbstractFirestoreRepository<User>{
+    protected UserRepository(Firestore firestore) {
+        super(firestore, "users");
+    }
 }

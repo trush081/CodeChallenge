@@ -37,11 +37,11 @@ public class UserService {
         //check that all fields are occupied
         isValid(user);
         //find if id is duplicate from previous user and skip adding new user if duplicate
-        if (!isDuplicate(user.getId(), userRepository.findAll())) {
+        if (!isDuplicate(user.getId(), userRepository.retrieveAll())) {
             userRepository.save(user);
             logger.info("User {} saved to database.", user);
         }
-        return new CountDTO(getMessageCount(userRepository.findAll()));
+        return new CountDTO(getMessageCount( userRepository.retrieveAll()));
     }
 
     /**

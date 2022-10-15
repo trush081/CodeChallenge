@@ -1,10 +1,8 @@
 package com.trentrush.codechallenge.entities;
 
+import com.google.cloud.firestore.annotation.DocumentId;
+import com.google.cloud.spring.data.firestore.Document;
 import io.swagger.v3.oas.annotations.media.Schema;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  * Entity class for users
@@ -12,11 +10,10 @@ import javax.persistence.Table;
  * Author: Trenton Rush (trush081@gmail.com)
  * Circa: 10/14/2022
  */
-@Entity
-@Table(name = "users")
+
 public class User {
 
-    @Id
+    @DocumentId
     @Schema(description = "Unique id of every user", example = "123")
     private String id;
 

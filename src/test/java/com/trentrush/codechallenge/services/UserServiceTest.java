@@ -36,8 +36,8 @@ public class UserServiceTest {
         List<User> users1 = new ArrayList<>();
         users1.add(user);
 
-        when(userRepository.findAll()).thenReturn(users).thenReturn(users1);
-        when(userRepository.save(any())).thenReturn(user);
+        when(userRepository.retrieveAll()).thenReturn(users).thenReturn(users1);
+        when(userRepository.save(any())).thenReturn(true);
 
         assertEquals(new CountDTO(2).getCount(), userService.addUser(user).getCount());
     }
@@ -50,8 +50,8 @@ public class UserServiceTest {
         List<User> users = new ArrayList<>();
         users.add(user);
 
-        when(userRepository.findAll()).thenReturn(users);
-        when(userRepository.save(any())).thenReturn(user);
+        when(userRepository.retrieveAll()).thenReturn(users);
+        when(userRepository.save(any())).thenReturn(true);
 
         assertEquals(new CountDTO(2).getCount(), userService.addUser(user1).getCount());
     }
@@ -61,8 +61,8 @@ public class UserServiceTest {
     void addUser_nullList() {
         User user = new User("test", "test message");
 
-        when(userRepository.findAll()).thenReturn(null);
-        when(userRepository.save(any())).thenReturn(user);
+        when(userRepository.retrieveAll()).thenReturn(null);
+        when(userRepository.save(any())).thenReturn(true);
 
         //This should return zero because not data is being saved in repository
         assertThrowsExactly(NullPointerException.class,() -> userService.addUser(user));
@@ -74,8 +74,8 @@ public class UserServiceTest {
         User user = null;
         List<User> users = new ArrayList<>();
 
-        when(userRepository.findAll()).thenReturn(users);
-        when(userRepository.save(any())).thenReturn(user);
+        when(userRepository.retrieveAll()).thenReturn(users);
+        when(userRepository.save(any())).thenReturn(true);
 
         //This should return zero because not data is being saved in repository
         assertThrowsExactly(ResponseStatusException.class,() -> userService.addUser(user));
