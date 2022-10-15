@@ -1,16 +1,9 @@
-# build environment
-FROM openjdk:17-jdk-alpine
-WORKDIR /app
-COPY . ./
-RUN ./gradle build
-
-# server environment
-FROM nginx:alpine
-COPY nginx.conf /etc/nginx/conf.d/configfile.template
-
-COPY --from=react-build /app/build /usr/share/nginx/html
-
-ENV PORT 8080
-ENV HOST 0.0.0.0
+FROM gradle:4.7.0-jdk17-alpine AS build
+COPY --chown=gradle:gradle . /home/gradle/src
+WORKDIR /home/gradle/src
+RUN gradle build --no-daemon
+FROM openjdk:17
 EXPOSE 8080
-CMD sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/configfile.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+RUN mkdir /app
+COPY --from=build /home/gradle/src/build/libs/*.jar /app/demo-docker-0.0.1-SNAPSHOT.jar
+ENTRYPOINT ["java", "-jar", "/app/codeChallenge-0.0.1-SNAPSHOT.jar"]
