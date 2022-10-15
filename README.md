@@ -10,26 +10,21 @@ Contact Trush081@gmail.com for any questions, issues, or explanations of the des
 5. Upload all code to a public GitHub repo with a readme that explains how to build and run the project
 
 ### Solution ###
-#### My solution involves using Spring Boot to help create a REST service and clean and readable code. Not to mention how powerful using Spring technologies and dependencies are. Some tools I've used here: ####
-* In memory Database using H2 and JPARepository (make sure to check out my other branch)
-* Swagger docs for a useful ui component http://localhost:8080/swagger-ui/index.html#/
-* Gradle has a superior build speed that I love taking advantage of
-* Unit testing using Mockito
-* Java 17
+#### As a little extra, I created this API using GCP and some of their technologies. ####
+* Firebase document database (This was chosen due to familiarity)
+* Google Cloud Run, an auto-scaling service (This was chosen for the mere factor that it has cold starts which is much nicer than setting up a costly compute engine)
+* Swagger docs for a useful ui component https://code-hphjt6sita-uc.a.run.app/swagger-ui/index.html#/
+* Jib a tool that helps to create containers directly from the command line with little to no effort (Note: I attempted to set up a pipeline using cloud build which you can see in the ugly commit history. An issue with GCP not wanting to run my application using Java 17 prevented me from doing this.)
 
-### Setup ###
-1. Clone repository onto local machine (I recommend using an IDE such as IntelliJ)
-2. This project is using Java 17, so make sure to have a recent JDK installed
-3. It can be helpful to have the latest version of [gradle](https://gradle.org/install/) installed (if not running from an IDE) 
-4. From project directory, run `./gradlew build` to download dependencies and run tests
-5. Lastly, run `./gradlew bootrun` to start up the application
+### Cold Starts ###
+Be aware that all initial calls to the API will have a drastic latency. This solution is only being used because it is nearly free.
 
 ### Example Request and Postman Collection ###
 #### Curl ####
-curl --location --request POST 'http://localhost:8080/user' \
+curl --location --request POST 'https://code-hphjt6sita-uc.a.run.app/user' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-"id": "123",
+"id": "1235",
 "message": "hello world"
 }'
 #### Postman Collection ####
