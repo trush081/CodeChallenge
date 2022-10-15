@@ -20,7 +20,7 @@ Contact Trush081@gmail.com for any questions, issues, or explanations of the des
 ### Setup ###
 1. Clone repository onto local machine (I recommend using an IDE such as IntelliJ)
 2. This project is using Java 17, so make sure to have a recent JDK installed
-3. It can be helpful to have the latest version of [gradle](https://gradle.org/install/) installed (if not running from and IDE) 
+3. It can be helpful to have the latest version of [gradle](https://gradle.org/install/) installed (if not running from an IDE) 
 4. From project directory, run `./gradlew build` to download dependencies and run tests
 5. Lastly, run `./gradlew bootrun` to start up the application
 
