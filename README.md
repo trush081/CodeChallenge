@@ -1,4 +1,5 @@
 # Code Challenge #
+#### CANNOT BE RAN LOCALLY WITHOUT FIRESTORE ACCESS!!! ####
 Contact Trush081@gmail.com for any questions, issues, or explanations of the design.
 
 ### Details of Challenge ###
