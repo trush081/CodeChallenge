@@ -11,6 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Stream;
 
 /**
  * Service class for User objects
@@ -50,14 +51,13 @@ public class UserService {
      * @return the total integer value of the number of words in each message
      */
     private int getMessageCount(List<User> users){
-        int count = 0;
         //loop through each user in list
-        for(User user : users){
-            //counting number of words by ignoring spaces
-            String[] words = user.getMessage().split("\\s+");
-            count += words.length;
-        }
-        return count;
+//        for(User user : users){
+//            //counting number of words by ignoring spaces
+//            String[] words = user.getMessage().split("\\s+");
+//            count += words.length;
+//        }
+        return (int)users.stream().flatMap(user -> Stream.of(user.getMessage().split("\\s+"))).count();
     }
 
     /**
